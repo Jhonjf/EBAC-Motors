@@ -5,9 +5,9 @@ $(document).ready(function() {
 
     $('.menu-hamburguer').click(function(){
         $('nav').slideToggle();
-    })
+    });
 
-    $('#telefone').mask('(00) 00000-0000')
+    $('#telefone').mask('(00) 00000-0000');
 
     $('form').validate({
         rules: {
@@ -22,40 +22,32 @@ $(document).ready(function() {
                 required: true 
             },
             mensagem: {
-                required :true,
+                required: true
             },
             veiculoDeInteresse: {
                 required: false
             }
         },
-        mensages: {
+        messages: {
             nome: 'Por favor, insira o seu nome'
         },
-        submithandler: function(form) {
-            console.log(form)
+        submitHandler: function(form) {
+            console.log(form);
         },
-        invalidHandler: function (evento, validador){
-            let camposIncorretos = validador.numberOfInvalids ();
+        invalidHandler: function (evento, validador) {
+            let camposIncorretos = validador.numberOfInvalids();
             if (camposIncorretos) {
-                alert(`Existem ${camposIncorretos} campos incorretos`)
+                alert(`Existem ${camposIncorretos} campos incorretos`);
             }
         }
-    })
-    $('form').submit(function(event){
+    });
 
-        event.preventDefault(); // Impede o comportamento padrão de recarregar a página ao enviar o formulário
-    
-      });
-  
     $('.lista-veiculos button').click(function() {
         const destino = $('#contato');
-        const nomeVeiculo = $(this).parent().find('h3').text();
-        
-        $('#veiculo-interesse').val(nomeVeiculo)
-    
+        const nomeVeiculo = $(this).closest('li').find('h3').text();
+        $('#veiculo-interesse').val(nomeVeiculo);
         $('html').animate ({
             scrollTop: destino.offset().top
-        }, 1000)
-    })
-})
-
+        }, 1000);
+    });
+});
